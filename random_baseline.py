@@ -11,7 +11,7 @@ lib_dir = (Path(__file__).parent / 'lib').resolve()
 if str(lib_dir) not in sys.path: sys.path.insert(0, str(lib_dir))
 from procedures import prepare_seed, prepare_logger
 from models import get_cell_based_tiny_net, get_search_spaces  # , nas_super_nets
-import eval_rfs
+import eval_searched_arch
 
 def prepare_seed(rand_seed):
     random.seed(rand_seed)
@@ -83,7 +83,7 @@ def main(xargs):
                 '--batch_size', str(xargs.aug_batchsize), '--genotype', str(network.genotype()), 
                 '--tb_path', os.path.join(str(xargs.save_dir),'logs'), '--model_path', os.path.join(str(xargs.save_dir),'model'),]
         # 5 way 5 shot
-        eval_rfs.main(evaluation_cmd)
+        eval_searched_arch.main(evaluation_cmd)
     else:
         raise NotImplementedError('Only support rfs training now.')
 

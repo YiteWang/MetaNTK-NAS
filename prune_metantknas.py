@@ -17,7 +17,7 @@ from log_utils import time_string
 from models import get_cell_based_tiny_net, get_search_spaces  # , nas_super_nets
 from nas_201_api import NASBench201API as API
 from pdb import set_trace as bp
-import eval_rfs
+import eval_searched_arch
 from opacus.utils import module_modification
 
 INF = 1000  # used to mark prunned operators
@@ -543,7 +543,7 @@ def main(xargs):
                     '--batch_size', str(xargs.aug_batchsize), '--genotype', searched_arch, 
                     '--tb_path', os.path.join(str(xargs.save_dir),'logs'), '--model_path', os.path.join(str(xargs.save_dir),'model'),]
             # 5 way 5 shot
-            eval_rfs.main(evaluation_cmd)
+            eval_searched_arch.main(evaluation_cmd)
         else:
             raise NotImplementedError('Only support rfs training now.')
 

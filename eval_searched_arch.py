@@ -363,32 +363,6 @@ def main(argv):
         save_file = os.path.join(opt.model_path, 'ckpt_last.pth')
         torch.save(state, save_file)
 
-        ## You may also want to save best checkpoint during training.
-
-        # if epoch % opt.save_freq == 0:
-        #     # Instead of using direct validation, we use validation with fine-tuning
-        #     # test_acc, test_acc_top5, test_loss = validate(val_loader, model, criterion, opt)
-        #     test_acc, _  = meta_test(model, meta_valloader, use_logit=False)
-
-        #     logger.info('val_acc with feature at epoch {}: {}'.format(epoch, test_acc))
-        #     # logger.info('test_acc_top5 at epoch {}: {}'.format(epoch, test_acc_top5))
-        #     # logger.info('test_loss at epoch {}: {}'.format(epoch, test_loss))
-
-        #     if test_acc > best_acc:
-        #         best_acc = test_acc
-        #         best_epoch = epoch
-        #         logger.info('==> Saving best checkpoint...')
-        #         state = {
-        #             'epoch': epoch + 1,
-        #             'model': model.state_dict() if opt.n_gpu <= 1 else model.module.state_dict(),
-        #             'opt': optimizer.state_dict(),
-        #             'scheduler': None if opt.scheduler == 'default' else scheduler.state_dict(),
-        #             'genotype': opt.genotype,
-        #         }
-        #         save_file = os.path.join(opt.model_path, 'ckpt_best.pth')
-        #         torch.save(state, save_file)
-
-
         # Save checkpoint for each epoch after 2/3 number of epochs of training
         if epoch >= int(1.0*opt.epochs*2/3):
             save_file = os.path.join(opt.model_path, 'ckpt_epoch{}.pth'.format(epoch))

@@ -65,7 +65,11 @@ You may also directly call `prune_metantknas.py`, there you will have much more 
 ### 2. Evaluation
 
 * You can set `train_after_search` to `true`  in script provided so architecture evaluation will automatically run after the search is done.
-* You can also use `eval_rfs.py` to train/evaluate obtained architectures (by its genotype).
+* You can also use `eval_searched_arch.py` to train/evaluate obtained architectures (by its genotype).
+
+## To-Do
+- [ ] Provide searched architectures (in a Dropbox or Google Drive folder)
+- [ ] Provide optimal hyperparameters (in `scripts/`) for the fine-tuning part of evaluation, i.e., finetuning a linear classifier on the top of the trained searched architecture for test few-shot tasks. 
 
 ## Acknowledgement
 
